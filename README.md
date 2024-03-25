@@ -1,5 +1,5 @@
-# Partition&pi
-Partition&pi is a Python library to handle integer partitions as lists and compute partitional analysis metrics. 
+# Partition&pi;
+Partition&pi; is a Python library to handle integer partitions as lists and compute partitional analysis metrics. 
 
 ## Instalation
 ```
@@ -59,7 +59,7 @@ p_mute = pp.mute(p1, 3)
 ```
 
 ### Methods
-Partition&pi gives some methods to enumerate objects, such as:
+Partition&pi; gives some methods to enumerate objects, such as:
 
 - All partitions with a limited density-number.
 - All ancestors or children of a given partition.
