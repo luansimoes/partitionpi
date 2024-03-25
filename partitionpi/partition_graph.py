@@ -34,8 +34,8 @@ def graph_complex(p):
     return g
 
 
-def draw_complex(obj_to_draw, colors = {'M':'red', 'J':'black'}, png_file = None):
-    '''Plot the partitional complex of the object, with option to save the figure.'''
+def draw_complex(obj_to_draw, colors = {'M':'red', 'J':'black'}):
+    '''Plot the partitional complex of the object.'''
 
     fig, ax = plt.subplots()
 
@@ -48,7 +48,8 @@ def draw_complex(obj_to_draw, colors = {'M':'red', 'J':'black'}, png_file = None
     node_labels = {node : as_tex_str(node) for node in obj_to_draw.nodes}
     edge_colors = [colors[obj_to_draw[p1][p2]['kinship']] for p1,p2 in obj_to_draw.edges()]
 
-    nx.draw(obj_to_draw, 
+    if obj_to_draw.number_of_nodes() < 25:
+        nx.draw(obj_to_draw, 
             pos=pos, 
             edge_color=edge_colors, 
             with_labels=True, 
@@ -58,6 +59,15 @@ def draw_complex(obj_to_draw, colors = {'M':'red', 'J':'black'}, png_file = None
             node_color = 'white',
             node_size = 300,
             font_size = 8)
+    else:
+        nx.draw(obj_to_draw, 
+            pos=pos, 
+            edge_color=edge_colors, 
+            with_labels=False,
+            ax = ax,
+            node_shape = '.',
+            node_size = 100,
+            node_color = 'green')
 
     ax.tick_params(left=True, bottom=True, labelleft=True, labelbottom=True)
     ax.set_xlabel('Agglomeration')
