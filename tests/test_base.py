@@ -1,7 +1,7 @@
 import unittest
 from unittest import result
 
-from partitional_analysis import *
+from partitionpi import *
 
 class TestBase(unittest.TestCase):
     def setUp(self) -> None:
