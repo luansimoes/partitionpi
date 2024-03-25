@@ -102,10 +102,12 @@ g = graph_complex(p)
 draw_complex(g, {'M' : 'red', 'J' : 'black'})
 ```
 Diagram for *p*:
+
 ![Diagram from draw_complex.](/img/example.png)
 
 Diagram for *p2*:
-![Diagram from draw_complex.](/img/example.png)
+
+![Diagram from draw_complex.](/img/example2.png)
 
 
 ## References
