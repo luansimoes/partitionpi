@@ -59,4 +59,4 @@ def as_str(p):
 
 def as_tex_str(p):
     exp = exponential_form(p)
-    return ''.join([str(i)+r"^{"+str(j)+r"}" for i,j in exp])
+    return '$'+''.join([str(i)+r"^{"+str(j)+r"}" for i,j in exp])+'$'

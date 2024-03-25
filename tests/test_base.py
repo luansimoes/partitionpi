@@ -91,15 +91,15 @@ class TestBase(unittest.TestCase):
         self.assertEqual(result, exp)
     
     def test_as_tex_str(self):
-        exp = r"1^{3}2^{2}"
+        exp = r"$1^{3}2^{2}$"
         result = as_tex_str(self.p)
         self.assertEqual(result, exp)
 
-        exp = r"1^{2}2^{1}3^{2}"
+        exp = r"$1^{2}2^{1}3^{2}$"
         result = as_tex_str(self.p2)
         self.assertEqual(result, exp)
 
-        exp = r"1^{3}2^{1}3^{1}"
+        exp = r"$1^{3}2^{1}3^{1}$"
         result = as_tex_str(self.p3)
         self.assertEqual(result, exp)
     

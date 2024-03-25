@@ -2,7 +2,6 @@ import unittest
 from unittest import result
 
 from partitional_analysis import *
-import numpy as np
 
 class TestOperators(unittest.TestCase):
     def setUp(self) -> None:
@@ -70,6 +69,9 @@ class TestOperators(unittest.TestCase):
         p_lin = [1, 1, 1, 4]
         result = join(self.p, 2, 2)
         self.assertEqual(result, p_lin)
+
+    def test_graph(self):
+        draw_complex([1,1,1,1])
 
 
 if __name__ == '__main__':
