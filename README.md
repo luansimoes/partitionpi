@@ -7,7 +7,7 @@ pip install partitionpi
 ```
 
 ## Get started
-First, we are dealing with integer partitions as lists, for example:
+We are dealing with integer partitions as lists, for example:
 
 ```Python
 import partitionpi as pp
