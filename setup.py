@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     readme = fh.read()
 
 setup(name='partitionpi',
-    version='0.0.1',
+    version='0.0.2',
     url='https://github.com/luansimoes/partitionpi',
     license='MIT License',
     author='Luan Simões',
@@ -14,4 +14,4 @@ setup(name='partitionpi',
     keywords='integer-partition texture music partitional analysis',
     description='Python library to handle integer partitions and compute partitional analysis metrics.',
     packages=find_packages(include=['partitionpi', 'partitionpi.*']),
-    install_requires=['networkx','matplotlib'],)
+    install_requires=['networkx>=3','matplotlib>=3'],)
