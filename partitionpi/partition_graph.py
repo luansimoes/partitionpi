@@ -34,8 +34,10 @@ def graph_complex(p):
     return g
 
 
-def draw_complex(obj_to_draw, colors = {'M':'red', 'J':'black'}):
-    '''Plot the partitional complex of the object.'''
+def draw_complex(obj_to_draw, 
+                 colors = {'M':'red', 'J':'black'}, 
+                 styles = {'M':'solid', 'J':'solid'}):
+    '''Plot the partitional complex of the object with custom colors and edge styles.'''
 
     fig, ax = plt.subplots()
 
@@ -46,28 +48,55 @@ def draw_complex(obj_to_draw, colors = {'M':'red', 'J':'black'}):
 
     pos = nx.get_node_attributes(obj_to_draw, 'pos')
     node_labels = {node : as_tex_str(node) for node in obj_to_draw.nodes}
-    edge_colors = [colors[obj_to_draw[p1][p2]['kinship']] for p1,p2 in obj_to_draw.edges()]
+
+    edges = {'M':[], 'J':[]}
+    [edges[obj_to_draw[e[0]][e[1]]['kinship']].append(e) for e in obj_to_draw.edges()]
+
+
 
     if obj_to_draw.number_of_nodes() < 25:
-        nx.draw(obj_to_draw, 
-            pos=pos, 
-            edge_color=edge_colors, 
-            with_labels=True, 
-            labels=node_labels,
-            ax = ax,
-            node_shape = 'o',
-            node_color = 'white',
-            node_size = 300,
-            font_size = 8)
+        nx.draw_networkx_nodes(obj_to_draw,
+                               pos=pos,
+                               ax=ax,
+                               node_shape='o',
+                               node_color='white',
+                               node_size=300)
+        nx.draw_networkx_labels(obj_to_draw,
+                                pos=pos,
+                                labels=node_labels,
+                                ax=ax,
+                                font_size=8)
+        nx.draw_networkx_edges(obj_to_draw,
+                               pos=pos,
+                               edgelist=edges['M'],
+                               style=styles['M'],
+                               edge_color=colors['M'],
+                               ax=ax)
+        nx.draw_networkx_edges(obj_to_draw,
+                               pos=pos,
+                               edgelist=edges['J'],
+                               style=styles['J'],
+                               edge_color=colors['J'],
+                               ax=ax)
     else:
-        nx.draw(obj_to_draw, 
-            pos=pos, 
-            edge_color=edge_colors, 
-            with_labels=False,
-            ax = ax,
-            node_shape = '.',
-            node_size = 100,
-            node_color = 'green')
+        nx.draw_networkx_nodes(obj_to_draw,
+                               pos=pos,
+                               ax=ax,
+                               node_shape='.',
+                               node_color='green',
+                               node_size=100)
+        nx.draw_networkx_edges(obj_to_draw,
+                               pos=pos,
+                               edgelist=edges['M'],
+                               style=styles['M'],
+                               edge_color=colors['M'],
+                               ax=ax)
+        nx.draw_networkx_edges(obj_to_draw,
+                               pos=pos,
+                               edgelist=edges['J'],
+                               style=styles['J'],
+                               edge_color=colors['J'],
+                               ax=ax)
 
     ax.tick_params(left=True, bottom=True, labelleft=True, labelbottom=True)
     ax.set_xlabel('Agglomeration')
